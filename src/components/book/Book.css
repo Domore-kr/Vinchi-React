@@ -1,65 +1,88 @@
 .book-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
 }
 
 .book {
-    width: 300px;
-    height: 200px;
-    position: relative;
-    perspective: 800px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .page {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
     background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    backface-visibility: hidden;
     transform-style: preserve-3d;
-    transition: transform 0.5s;
-    box-sizing: border-box;
-}
-
-.page-left {
-    transform-origin: right center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    pointer-events: none;
+    transition: transform 0.8s ease;
     z-index: 1;
 }
 
-.page-right {
-    transform-origin: left center;
-    z-index: 2;
-}
-
-.current-page {
-    transform: rotateY(0deg);
+.page.active {
+    pointer-events: auto;
+    position: absolute;
     z-index: 5;
 }
 
+.page-left {
+    transform: rotateY(-90deg) translateZ(-50%);
+    left: 0;
+}
+
+.page-right {
+    transform: rotateY(90deg) translateZ(-50%);
+    right: 0;
+}
+
 .navigation-buttons {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-button {
-    margin: 0 5px;
-    padding: 10px 15px;
-    font-size: 14px;
+.open-button,
+.close-button,
+.prev-button,
+.next-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
     border: none;
-    background-color: #ccc;
-    color: #fff;
+    border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
-button:disabled {
-    background-color: #f2f2f2;
-    color: #999;
+.open-button:disabled,
+.close-button:disabled,
+.prev-button:disabled,
+.next-button:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
 }
