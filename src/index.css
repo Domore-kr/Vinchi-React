@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #3F5155 1.76%, #1E3135 0);
-  /* background: url(http://www.stariki.team/image/0022_cssbook/zamok.jpg) no-repeat; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -25,4 +24,8 @@ ul {
 
 h1, h2, h3 {
   margin: 0;
+}
+
+a {
+
 }
